@@ -8,18 +8,18 @@ class BaseConfig:
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:basileking@localhost:5432/hospital_flask'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bassilekin:gaston2006@db:5432/hospital_flask'
 
 class TestingConfig(BaseConfig):
     """Testing configuration."""
     DEBUG = True
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:basileking@localhost:5432/hospital_flask'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bassilekin:gaston2006@db:5432/hospital_flask'
 
 class ProductionConfig(BaseConfig):
     """Production configuration."""
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:basileking@localhost:5432/hospital_flask'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bassilekin:gaston2006@db:5432/hospital_flask'
 
 
 def get_config_by_name(config_name):
