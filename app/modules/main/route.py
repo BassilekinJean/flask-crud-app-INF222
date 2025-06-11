@@ -115,3 +115,7 @@ def add_maladies_to_patient(patient_id):
     data = request.get_json()
     maladie_ids = data.get('maladie_ids', [])
     return jsonify(controller.addMaladieToPatient(patient_id, maladie_ids))
+
+@main_bp.route('/patients/<int:patient_id>/probabilites', methods=['GET'])
+def patient_probabilites(patient_id):
+    return jsonify(controller.maladieProbabilites(patient_id))

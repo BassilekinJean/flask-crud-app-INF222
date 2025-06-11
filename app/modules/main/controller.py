@@ -179,3 +179,36 @@ class MainController:
                 patient.maladies.append(maladie)
         db.session.commit()
         return patient.to_dict()
+    
+    def maladieProbabilites(self, patient_id):
+        patient = Patient.query.get(patient_id)
+        if not patient:
+            return {'message': 'Patient not found'}, 404
+
+        if not patient.symptomes:
+            return {'message': 'Aucun symptôme renseigné pour ce patient'}, 400
+
+        # On suppose que les symptômes sont séparés par des virgules
+        patient_symptomes = set(s.strip().lower() for s in patient.symptomes.split(','))
+
+        result = []
+        maladies = Maladie.query.all()
+        for maladie in maladies:
+            if not maladie.symptomes:
+                continue
+            maladie_symptomes = set(s.strip().lower() for s in maladie.symptomes.split(','))
+            # Intersection des symptômes
+            communs = patient_symptomes & maladie_symptomes
+            if maladie_symptomes:
+                probabilite = len(communs) / len(maladie_symptomes)
+            else:
+                probabilite = 0
+            result.append({
+                'maladie': maladie.nom,
+                'probabilite': round(probabilite, 2),
+                'symptomes_communs': list(communs)
+            })
+
+        # Trie par probabilité décroissante
+        result = sorted(result, key=lambda x: x['probabilite'], reverse=True)
+        return result
