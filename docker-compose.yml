@@ -1,11 +1,32 @@
+version: '3.9'
 
 services:
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:5000 wsgi:app
+    container_name: hospital_web
+    command: gunicorn --bind 0.0.0.0:5000 wsgi:app # Use Gunicorn for production
+    ports:
+      - "5002:5000"
     volumes:
       - .:/app
-    ports:
-      - "5000:5000"
+    depends_on:
+      - db
     environment:
-      - FLASK_ENV=production
+      DATABASE_URL: postgresql://bassilekin:gaston2006@db:5432/hospital_flask
+      FLASK_APP: wsgi.py # Assuming your Flask app instance is in wsgi.py
+
+  db:
+    image: postgres:16.9
+    container_name: hospital_db
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: bassilekin # User for PostgreSQL database
+      POSTGRES_PASSWORD: gaston2006 # Password for PostgreSQL database
+      POSTGRES_DB: hospital_flask # Database name
+
+volumes:
+  pgdata:
