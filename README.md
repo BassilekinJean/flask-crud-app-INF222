@@ -4,8 +4,9 @@
 
 ## URL de base
 
+LE port en local est 5002
 ```
-http://localhost:5000/api/v1/main
+http://localhost:5002/api/v1/main
 ```
 
 ---
