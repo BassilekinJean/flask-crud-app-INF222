@@ -6,6 +6,8 @@
 
 LE port en local est 5002 en utilisant docker
 ```
+### Lien SWAGGER pour la documentation dynamique
+- **URL** `http://localhost:5000/apidocs`
 
 ```
 
@@ -153,5 +155,3 @@ LE port en local est 5002 en utilisant docker
 - Les réponses sont généralement au format JSON, sauf pour le téléchargement d’image (`/download`).
 
 ---
-
-N’hésite pas à demander des exemples plus détaillés pour une route spécifique !
