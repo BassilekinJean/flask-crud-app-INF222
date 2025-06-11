@@ -4,9 +4,9 @@
 
 ## URL de base
 
-LE port en local est 5002
+LE port en local est 5002 en utilisant docker
 ```
-http://localhost:5002/api/v1/main
+
 ```
 
 ---
