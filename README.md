@@ -5,11 +5,12 @@
 ## URL de base
 
 LE port en local est 5002 en utilisant docker
-```
-### Lien SWAGGER pour la documentation dynamique
+
+### Lien SWAGGER pour la documentation dynamique des endpoints
+
 - **URL** `http://localhost:5000/apidocs`
 
-```
+
 
 ---
 
