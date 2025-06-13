@@ -2,6 +2,7 @@ version: '3.9'
 
 services:
   web:
+    image: flask-crud-app-inf22-web
     build: .
     container_name: hospital_web
     command: gunicorn --bind 0.0.0.0:5000 wsgi:app # Use Gunicorn for production
