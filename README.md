@@ -124,6 +124,40 @@ LE port en local est 5002 en utilisant docker
 
 ## 5. Exemples de requêtes Postman
 
+### Calculer la probabilité qu’un patient ait chaque maladie
+
+- **GET** `/patients/<patient_id>/probabilites`
+
+Cette route retourne, pour un patient donné, la probabilité d’avoir chaque maladie en fonction de la correspondance de ses symptômes avec ceux des maladies enregistrées.
+
+**Exemple de réponse :**
+```json
+[
+  {
+    "maladie": "Grippe",
+    "probabilite": 0.67,
+    "symptomes_communs": ["fièvre", "toux"]
+  },
+  {
+    "maladie": "Paludisme",
+    "probabilite": 0.33,
+    "symptomes_communs": ["fièvre"]
+  }
+]
+```
+
+- **Paramètre** :  
+  - `patient_id` : l’identifiant du patient à analyser
+
+- **Description** :  
+  Pour chaque maladie, la probabilité est calculée comme le ratio entre le nombre de symptômes communs et le nombre total de symptômes de la maladie.
+
+---
+
+**Exemple d’utilisation dans Postman** :
+- Méthode : GET
+- URL : `/patients/1/probabilites`
+
 ### Créer un patient (POST)
 - Méthode : POST
 - URL : `/patients`
